@@ -1,0 +1,17 @@
+---
+- hosts: web
+  become: true
+  tasks:
+    - yum:
+        name:
+          - httpd
+        state: present
+    - service: 
+        name: httpd 
+        state: started 
+        enabled: yes
+    - name: custom index.html
+      ansible.builtin.copy:
+        dest: /var/www/html/index.html
+        content: |
+                          Welcome to Hareem's Webpage 

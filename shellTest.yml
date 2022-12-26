@@ -1,0 +1,12 @@
+---
+- name: Testing Shell Module
+  hosts: all
+
+  tasks: 
+    - name: Directory Listing
+      shell: 
+        "ls /etc/"
+      register: var_listing
+
+    - debug: msg = "{{ var_listing.stdout }}"
+

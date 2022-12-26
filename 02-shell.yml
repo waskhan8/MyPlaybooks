@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+    - name: Execute Shell Commands
+      shell: 
+        "cat passwd"
+      args: 
+        chdir: "/etc"
+      register: uname_result
+    - debug: msg="{{ uname_result.stdout }}"   
+    
+
+        

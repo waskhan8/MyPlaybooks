@@ -1,0 +1,20 @@
+---
+- name: Create Users for testing
+  hosts: all
+  become: true
+
+  vars: 
+    web_users:
+      - AccptUser
+      - DevUser
+      - ProdUser
+
+  tasks: 
+    - name: Create Users
+      user: 
+        name: "{{ item }}"
+        state: present  
+      loop: "{{ web_users }}"
+      when: "'web' in group_names"  
+
+

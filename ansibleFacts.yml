@@ -1,0 +1,14 @@
+---
+- hosts: node1
+
+  tasks: 
+    - name: Kernal
+      debug: msg="{{ ansible_kernel }}"
+
+    - name:  IPv4
+      debug: msg="{{ ansible_all_ipv4_addresses }}"
+
+    - name: Architecture  
+      debug: var=ansible_architecture
+    - debug: var=ansible_distribution
+
