@@ -1,0 +1,12 @@
+---
+- name: Trying out vault by creating new users
+  hosts: web
+  become: true
+  
+  tasks:
+
+    - name: Create DB User
+      user: 
+        name: "{{ username['test']['uname'] }}" 
+        comment: "{{ username['test']['description'] }}"
+        state: present 

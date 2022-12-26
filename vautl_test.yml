@@ -1,0 +1,21 @@
+---
+- name: Trying out vault by creating new users
+  hosts: web
+  become: true
+  user: devops
+
+  tasks:
+    - name: Load varialbe from encrypted file
+      include_vars:
+        file: secrets
+    - name: Display encrupted file content
+      debug: 
+        msg: "{{ Password }}"
+      no_log: true  
+
+    - name: Create DB User
+      user: 
+        name: "{{ username['test']['uname'] }}" 
+        comment: "{{ username['test']['description'] }}"
+        password: "{{ username['test']['password'] }}"
+        state: present 

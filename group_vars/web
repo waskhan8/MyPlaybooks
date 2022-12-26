@@ -1,0 +1,6 @@
+#Testing group vars
+username:
+  test:
+    uname: test
+    description: Test User Account
+    password: "{{ Password }}"
